@@ -1,31 +1,55 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
     <router-view/>
   </div>
 </template>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
+<script>
+import { CometChat } from "@cometchat-pro/chat";
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+import "./App.css";
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+export default {
+  data() {
+    return {
+      username: ''
+    }
+  },
+  created() {
+    this.initializeApp();
+    const username = prompt("Username");
+    this.authLoginUser(username);
+  },
+
+  methods: {
+    initializeApp() {
+      const { VUE_APP_COMMETCHAT_APP_ID } = process.env
+      CometChat.init(VUE_APP_COMMETCHAT_APP_ID).then(
+        () => {
+          console.log("Initialization completed successfully");
+        },
+        error => {
+          console.log("Initialization failed with error:", error);
+        }
+      );
+    },
+    authLoginUser(username) {
+      var apiKey = process.env.VUE_APP_COMMETCHAT_API_KEY;
+
+      CometChat.login(username, apiKey).then(
+        () => {
+          this.showSpinner = false;
+          this.$router.push({
+            name: "chat"
+          });
+        },
+        error => {
+          this.showSpinner = false;
+          alert("Whops. Something went wrong. This commonly happens when you enter a username that doesn't exist. Check the console for more information")
+          console.log("Login failed with error:", error.code);
+        }
+      );
+    }
+  }
+};
+</script>
