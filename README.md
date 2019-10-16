@@ -4,7 +4,7 @@ This sample app shows how to build a group chat application with typing indicato
 
 SCREENSHOTS
 
-![Typing indicator 1](screenshots/screenshot_1.png)
+![Typing indicator 1](screenshots/both_typing.png)
 
 
 ## Running the demo locally
