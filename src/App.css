@@ -173,7 +173,7 @@ nav {
   margin: auto;
   max-width: 800px;
   width: calc(100% - 20px);
-  height: 588px;
+  min-height: 500px;
   font-family: sans-serif;
   letter-spacing: 0.5px;
   background: #f8f9fb;
@@ -234,7 +234,7 @@ nav {
 }
 
 .msg-page {
-  height: 516px;
+  height: 450px;
   overflow-y: auto;
   padding-bottom: 50px;
 }
@@ -331,7 +331,7 @@ nav {
 .msg-bottom {
   position: relative;
   height: 60px;
-  background-color: #007bff;
+  /* background-color: #007bff; */
   border-radius: 100px 100px 0 0;
 }
 
@@ -406,11 +406,11 @@ nav {
   display: flex;
   flex-direction: column;
 
-  padding-bottom: 25px;
+  /* padding-bottom: 25px; */
 }
 
 .currently-typing-wrapper {
-  background: white;
+  background: #f8f9fb;
   padding: 12px;
   display: inline-flex;
   width: 100%;
@@ -517,13 +517,8 @@ nav .spinner {
 
 
 .container-dot {
-  /* background-color: #E6E7ED; */
   padding-left: 15px;
-  /* border-radius: 20px; */
   display: inline-block;
-  /* position: absolute; */
-    /* top: 3px; */
-    /* left: 114px; */
 }
 
 .dot {

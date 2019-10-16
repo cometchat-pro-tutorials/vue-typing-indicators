@@ -67,15 +67,12 @@
                   </div>       
 
                 <div>
-                  <div class="currently-typing-wrapper" v-if="typingUsers.length === 0">
+                  <div class="currently-typing-wrapper" v-if="typingUsers.length > 0">
                     <div>
-                       <p>I am currently typing</p>
-                    </div>
-                    <!-- <div>
                       <p v-if="typingUsers.length === 1"> {{typingUsers[0].name}} is typing </p>
                       <p v-else-if="typingUsers.length === 2"> {{typingUsers[0].name}} and  {{typingUsers[1].name}} are typing </p>
                       <p v-else-if="typingUsers.length > 2"> Several people are typing</p>
-                    </div> -->
+                    </div>
 
                     <div class="container-dot">
                       <span class="dot"></span>
