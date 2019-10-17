@@ -17,7 +17,7 @@ export default {
   },
   created() {
     this.initializeApp();
-    const username = prompt("Username");
+    const username = prompt(`Welcome to our little Vue demo powered by CometChat. Login with the username superhero1 or superhero2 and test the chat out. To create your own user, copy this link 'https://prodocs.cometchat.com/reference#createuser' and paste into your address-bar`);
     this.authLoginUser(username);
   },
 
