@@ -417,6 +417,7 @@ nav {
   flex-direction: row;
   align-content: center;
   justify-items: center;
+  height: 50px;
 }
 
 .logo {
