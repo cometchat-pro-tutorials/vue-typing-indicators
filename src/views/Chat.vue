@@ -65,23 +65,8 @@
                         </div>
                       </div>
                   </div>       
+                <!-- Add typing indicator here -->      
 
-                <div>
-                  <div class="currently-typing-wrapper">
-                    <div>
-                      <p v-if="typingUsers.length === 1"> {{typingUsers[0].name}} is typing </p>
-                      <p v-else-if="typingUsers.length === 2"> {{typingUsers[0].name}} and  {{typingUsers[1].name}} are typing </p>
-                      <p v-else-if="typingUsers.length > 2"> Several people are typing</p>
-                    </div>
-
-                    <div class="container-dot" v-if="typingUsers.length > 0">
-                      <span class="dot"></span>
-                      <span class="dot"></span>
-                      <span class="dot"></span>
-                    </div>
-                  </div>
-                </div>
-            
               </div>
 
              
@@ -89,7 +74,8 @@
               <div class="msg-bottom">
                 <form class="message-form" v-on:submit.prevent="sendGroupMessage">
                   <div class="input-group">
-                    <input type="text" class="form-control message-input" @keyup="startTypingEvent()" placeholder="Type something" v-model="chatMessage" required>
+                    <!-- Include keyup event method for this input field -->
+                    <input type="text" class="form-control message-input" placeholder="Type something" v-model="chatMessage" required>
                     <spinner
                       v-if="sendingMessage"
                       class="sending-message-spinner"
@@ -124,7 +110,8 @@ export default {
       loggingOut: false,
       groupMessages: [],
       loadingMessages: false,
-      typingUsers: []
+      // add typingUsers array
+
     };
   },
   mounted() {
@@ -166,16 +153,8 @@ export default {
             this.scrollToBottom();
           })
         },
-        onTypingStarted: typingIndicator => {
-          console.log('Typing started :', typingIndicator);
-          this.typingUsers.push(typingIndicator.sender);
-        },
-        onTypingEnded: typingIndicator => {
-            console.log('Typing ended :', typingIndicator);
-            this.typingUsers = this.typingUsers.filter(
-              user => user.uid !== typingIndicator.sender.uid
-            );
-        }
+        // add TypingStarted and TypingEnded
+
       })
     );
   },
@@ -223,33 +202,16 @@ export default {
             this.scrollToBottom()
           })
 
-          let receiverId = process.env.VUE_APP_COMMETCHAT_GUID;
-          let receiverType = CometChat.RECEIVER_TYPE.GROUP;
+          // End typing after sending message
 
-          let typingNotification = new CometChat.TypingIndicator(
-            receiverId,
-            receiverType
-          );
-
-          CometChat.endTyping(typingNotification);
         },
         error => {
           console.log("Message sending failed with error:", error);
         }
       );
     },
-    startTypingEvent() {
-
-          let receiverId = process.env.VUE_APP_COMMETCHAT_GUID;
-          let receiverType = CometChat.RECEIVER_TYPE.GROUP;
-
-          let typingNotification = new CometChat.TypingIndicator(
-            receiverId,
-            receiverType
-          );
-
-          CometChat.startTyping(typingNotification);      
-    }
+    // add startTypingEvent method
+    
   }
 };
 </script>
