@@ -9,7 +9,7 @@ SCREENSHOTS
 
 ## Running the demo locally
 
-* Download the repository [here]() or run `git clone https://github.com/cometchat-pro-tutorials/vue-typing-indicators.git`
+* Download the master branch of this repository [here](https://github.com/cometchat-pro-tutorials/vue-typing-indicators/tree/master)
 * In the `vue-typing-indicators` directory, run `npm install`
 * You need to sign up for CometChat PRO and create your application first
 * Create an ApiKey. You can use auth-only permission for this application
